@@ -1,0 +1,164 @@
+﻿@using X.PagedList 
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@*@model IPagedList<CRMSMVCAPP.Models.Product>*@
+@model List<CRMSMVCAPP.Models.Product>
+
+@{
+    ViewData["Title"] = "GetProductsByCategory";
+    Layout = "~/Views/Shared/ShoppingLayout.cshtml";
+}
+
+
+
+
+     <html>
+<head>
+    <style>
+        .grid-container {
+            display: grid;
+            gap: 50px 100px;
+            grid-template-columns: auto auto auto;
+            background-color: darkorange;
+            padding: 10px;
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 5px;
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+
+<link rel="stylesheet" href="~/amado-master/css/core-style.css">
+<link rel="stylesheet" href="~/amado-master/style.css">
+</head>
+
+<body>
+
+
+    <div class="amado_product_area " style="background-color: darkorange">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-topbar d-xl-flex align-items-end justify-content-between">
+                        <!-- Total Products -->
+                        <!-- Sorting -->
+                        
+                           
+                                <table width="30%">
+                                    <tr>
+                                        <th> Filtrele</th>
+                                        <th>
+                                            <a asp-asp-controller="MainPage" asp-action="FilterProducts"
+                                               asp-route-id="@Convert.ToInt32(Model[0].CATEGORYID)" asp-route-filterType="FIYATAZALAN">
+                                                <i class="far fa-circle nav-icon">Fiyat Azalan</i> <hr />
+
+                                            </a>
+                                        </th>
+                                        <th>
+                                            <a asp-asp-controller="MainPage" asp-action="FilterProducts"
+                                               asp-route-id="@Convert.ToInt32(Model[0].CATEGORYID)" asp-route-filterType="FIYATARTAN">
+                                                <i class="far fa-circle nav-icon">Fiyat Artan</i><hr />
+
+                                            </a>
+                                        </th>
+                                        <th>
+                                            <a asp-asp-controller="MainPage" asp-action="FilterProducts"
+                                               asp-route-id="@Convert.ToInt32(Model[0].CATEGORYID)" asp-route-filterType="AZ">
+                                                <i class="far fa-circle nav-icon">AZ</i><hr />
+
+                                            </a>
+                                        </th>
+                                        <th>
+                                            <a asp-asp-controller="MainPage" asp-action="FilterProducts"
+                                               asp-route-id="@Convert.ToInt32(Model[0].CATEGORYID)" asp-route-filterType="ZA">
+                                                <i class="far fa-circle nav-icon">ZA</i><hr />
+
+                                            </a>
+                                        </th>
+                                    </tr>
+
+                                </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="grid-container">
+         @foreach (var item in Model)
+            {
+        <div class="grid-item" style="">
+
+           
+                <!-- Single Product Area -->
+                
+                    <div class="single-product-wrapper">
+                        <!-- Product Image -->
+                        <div class="product-img">
+                            <img src="@item.ImageUrl" alt="">
+                            <!-- Hover Thumb -->
+
+                        </div>
+
+                        <!-- Product Description -->
+                        <div class="product-description d-flex align-items-center justify-content-between">
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <div class="line"></div>
+                                <p class="product-price">@item.PRICE &nbsp; TL</p>
+                                <a href="/MainPage/GetProductById/@item.PRODUCTID">
+                                    <h6>@item.PRODUCTNAME</h6>
+                                </a>
+                            </div>
+                            <!-- Ratings & Cart -->
+                            <div class="ratings-cart text-right">
+                                <div class="ratings">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+                                <div class="cart">
+                                    <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                
+           
+        </div>
+        }
+        </div>
+    
+   @*<div class="col-12" style=" background-color: darkorange ;text-align:right ">
+        <!-- Pagination -->
+        <nav aria-label="navigation" style="background-color: darkorange; text-align:right  ">
+            <ul class="pagination justify-content-end mt-50">
+       
+               @Html.PagedListPager((IPagedList)Model,page=>Url.Action("FilterProducts",new {page=page }),new PagedListRenderOptions()
+                {
+                ActiveLiElementClass="active",
+                PageClasses=new []{"page-link"},
+                LiElementClasses=new []{"page-item"},
+                //UlElementClasses=new[]{"pagination","justif-content-center","mt-3"},
+                LinkToNextPageFormat=">>",
+                LinkToPreviousPageFormat="<<",
+                MaximumPageNumbersToDisplay=5,
+                DisplayLinkToPreviousPage=PagedListDisplayMode.Always,
+                DisplayLinkToNextPage=PagedListDisplayMode.Always
+                })
+            </ul>
+        </nav>
+    </div>*@
+
+    
+
+</body>
+</html>

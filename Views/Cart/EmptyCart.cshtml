@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "EmptyCart";
+    Layout = "~/Views/Shared/ShoppingLayout.cshtml";
+}
+
+<html>
+
+<head>
+
+<style>
+
+    #container
+
+    {
+
+        width: 100px;
+
+        height: 100px;
+
+       
+
+        position: absolute;
+
+        left: 40%;
+
+        top: 40%;
+
+        margin-left: -50px;
+
+        margin-top: -50px;
+
+    }
+
+</style>
+
+</head>
+
+<body style="background-color:darkorange" >
+    <div style="width:1290px;height:600px; background-color:darkorange">
+    <div id="container">
+
+   <div style="align-content:center; align-items:center;text-align:center;  width:450px  ">
+   @*<img width="300px" src="~/amado-master/img/product-img/sepet.jpg" />*@
+    <p>Sepetiniz Boş Ürünleri Keşfedip Alışverişin Tadını Çıkarın</p>
+    @Html.ActionLink("Alışverişe Başla","Index","MainPage",null,new {@class="btn btn-primary"})
+    
+   </div>
+
+    </div>
+    </div>
+
+</body>
+
+</html

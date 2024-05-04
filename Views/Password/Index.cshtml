@@ -1,0 +1,98 @@
+﻿@model CRMSMVCAPP.Models.PasswordRequest
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/ShoppingLayout.cshtml";
+}
+<html>
+    <head>
+        <style>
+    #container
+
+    {
+        width: 100px;
+        height: 100px;
+        background-color: #567;
+        position: absolute;
+        left: 40%;
+        top: 40%;
+        margin-left: -50px;
+        margin-top: -50px;
+    }
+
+</style>
+
+    </head>
+ <body class="hold-transition login-page">
+     <div style="width:100%;height:600px;background-color:darkorange">
+    <div id="container">
+<div class="login-box">
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Aşağıdaki Bilgileri Doldurarak Şifenizi Değiştirebilirsiniz.</p>
+    @using (Html.BeginForm("Index", "Password", FormMethod.Post))
+{
+        <div class="input-group mb-3">
+           @Html.TextBoxFor(x=>x.UserName ,new {@class="form-control",placeholder="Kullanıcı Adı"})
+          
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+     @Html.PasswordFor(x=>x.Password,new {@class="form-control",@placeholder="Şifre",@type="password"})
+         
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+         <div class="input-group mb-3">
+    @Html.PasswordFor(x=>x.NewPassword,new {@class="form-control",@placeholder="Yeni Şifre",@type="password"})
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+                    <div class="input-group mb-3">
+      @Html.PasswordFor(x=>x.ConfirmPassword,new {@class="form-control",@placeholder=" Şifreyi Doğrula",@type="password"})
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Şifreyi Değiştir</button>
+          </div>
+       
+        </div>
+      }
+
+    </div>
+
+  </div>
+</div>
+ </div>
+</div>
+
+    @if (ViewBag.Messeage != null)
+    {
+            <script type="text/javascript">
+                window.onload=function(){
+                    alert("@ViewBag.Messeage");
+                }
+
+            </script>
+    }
+
+
+
+</body>
+</html>
